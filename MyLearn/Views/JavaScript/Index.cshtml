@@ -1,0 +1,75 @@
+﻿@{
+    ViewBag.Title = "Index";
+    
+}
+
+
+<script src="~/Scripts/jquery-1.8.2.js"></script>
+<script src="~/Scripts/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript">
+        var a = "a";
+        function Demo() {
+            console.log(a)//undefined
+            var a = "ab";
+            console.log(a);//"ab"
+        }
+        Demo();
+
+        //Demo1
+        Function.prototype.method = function (name, fn) {
+            this.prototype[name] = fn;
+            return this;
+        }
+        var Admin = function () {
+
+        };
+        Admin.method("start", function () {
+            alert("start");
+        });
+        Admin.method("stop", function () {
+            alert("stop");
+        });
+        $(function () {
+           // alert(Admin.prototype.stop())
+        });
+
+        //Demo2
+       //(function () {
+       //     var a = 10;
+       //     var b = 20;
+       //     alert(a * b);
+        // })(4,5);
+        (function (a, b) {
+            alert(a * b);
+        })(3, 5);
+
+        //Demo3
+        var baz;
+        (function () {
+            var a = 1;
+            var b = 2;
+            baz = function () {
+                return a * b;
+            }
+        })();
+        alert(baz());
+        //Demo4
+        $(function () {
+            function Demo4() {
+                var demoA = 10;
+                function DemoBaz() {
+                    demoA = demoA * 2;
+                    return demoA
+                }
+               return DemoBaz();
+                alert("demoa:"+ demoA);
+            }
+            var DemoFoot = Demo4();
+            DemoFoot();
+            DemoFoot();
+            DemoFoot();
+            var DemoBlat = Demo4();
+            DemoBlat();
+        });
+    
+    </script>

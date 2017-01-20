@@ -1,0 +1,266 @@
+﻿@{
+    ViewBag.Title = "FormIndex";
+}
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        .mark {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 10086;
+            height: 100%;
+            width: 100%;
+            opacity: 0;
+            visibility: hidden;
+            transition: all ease 0.3s;
+            background: rgba(0, 0, 0, .6);
+        }
+
+        .model {
+            z-index: 1008611;
+            position: fixed;
+            top: 0;
+            left: 50%;
+            -webkit-transform: translate3d(-50%, 0, 0);
+            transform: translate3d(-50%, 0, 0);
+            visibility: hidden;
+            width: 240px;
+            height: 60px;
+            transition: all .3s;
+            opacity: 0;
+            background: #344;
+            border-radius: 2px;
+        }
+
+            .model > h4 {
+                padding-left: 8px;
+                color: #fff;
+                margin-top: 3px;
+                text-align: left;
+            }
+
+        .dialog-show .model {
+            visibility: visible;
+            opacity: 1;
+            -webkit-transform: translate3d(-50%, 100px, 0) scale(1);
+            -moz-transform: translate3d(-50%, 100px, 0) scale(1);
+            -ms-transform: translate3d(-50%, 100px, 0) scale(1);
+            transform: translate3d(-50%, 100px, 0) scale(1);
+            opacity: 1;
+        }
+
+        .dialog-show .mark {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .close {
+            position: absolute;
+            top: 4px;
+            right: 10px;
+            width: 10px;
+            border-radius: 50%;
+            border: 1px solid #000;
+            z-index: 222;
+            text-decoration: none;
+            color: #fff;
+            line-height: 12px;
+        }
+
+        body {
+            height: 800px;
+        }
+
+        .dialog-show {
+            overflow-y: hidden;
+        }
+
+        button {
+            line-height: 20px;
+            border-radius: 2px;
+            display: inline-block;
+            text-shadow: 0px 0px 1px #fff;
+            text-align: center;
+            box-sizing: border-box;
+            outline: none;
+            border: 1px solid #ccc;
+            padding: 0 3px;
+        }
+
+        .ok {
+            background: green;
+        }
+
+        .cancle {
+            background: red;
+            margin-left: 3px;
+        }
+
+        .btnbox {
+            position: absolute;
+            bottom: 4px;
+            right: 15px;
+        }
+
+        .form {
+            width: 400px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+            .form > div {
+                margin-top: 10px;
+                text-align: center;
+            }
+
+            .form input {
+                border-radius: 2px;
+                border: 1px solid #ccc;
+                width: 210px;
+                line-height: 20px;
+                padding-left: 4px;
+            }
+
+            .form .table {
+                margin-top: 20px;
+                box-sizing: border-box;
+                border: 1px solid #000;
+                border-radius: 10px;
+            }
+
+        .head,
+        .showlist li {
+            display: -webkit-box;
+            -webkit-box-align: center;
+            -webkit-box-pack: center;
+        }
+
+            .head > p {
+                display: box;
+                width: 100px;
+                text-align: center;
+                color: #399;
+                text-shadow: 0px 0px 1px #396;
+            }
+
+        .head {
+            margin-top: 10px;
+        }
+
+        .showlist {
+            margin-bottom: 10px;
+        }
+
+            .showlist li {
+                margin-top: 10px;
+            }
+
+                .showlist li p {
+                    width: 100px;
+                    text-align: center;
+                    display: box;
+                    color: #000;
+                    text-shadow: 0px 0px 1px #999;
+                }
+    </style>
+    <script src="~/Scripts/jquery-1.8.2.js"></script>
+    @*<script src="~/Scripts/vue-dev/dist/vue.min.js"></script>*@
+    <script src="~/Scripts/vue-dev/dist/vue.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var vmForm = new Vue({
+                el: ".form",
+                data: {
+                    dataArr: [],
+                    name: '',
+                    age: '',
+                    rowIndex: 0
+                },
+                methods: {
+                    add: function () {
+                        if (!vmForm.$data.name || !vmForm.$data.age) {
+                            alert('请填写完整的信息');
+                            return;
+                        }
+                        this.dataArr.push({
+                            name: this.name,
+                            age: this.age
+                        });
+                    },
+                    reset: function () {
+                        this.name = "";
+                        this.age = "";
+                    },
+                    //删除
+                    del: function (index) {
+                        $("body").addClass('dialog-show');
+                        $(document).on('touchmove', preventDefault);
+                        this.rowIndex = index;
+                    },
+                    //关闭
+                    close: function () {
+                        $(document).off('touchmove', preventDefault);
+                        $("body").removeClass('dialog-show');
+                    },
+                    ok: function () {
+                        alert(this.rowIndex)
+                        this.dataArr.splice(this.rowIndex, 1);
+                        $(document).off('touchmove', preventDefault);
+                        $("body").removeClass('dialog-show');
+                    }
+                }
+            });
+
+            function preventDefault(e) {
+                e.preventDefault();
+            }
+        });
+    </script>
+</head>
+<body>
+    <div class="form">
+        <div>名字：<input type="text" id="name" v-model="name" placeholder="请输入名称" /></div>
+        <div>年龄：<input type="text" id="name" v-model="age" placeholder="请输入年龄" /></div>
+        <div class="btnbox2"><button class="ok" v-on:click="add()">确认</button><button class="cancle" v-on:click="reset()">重置</button></div>
+        <div class="table">
+            <div class="head">
+                <p>序号</p>
+                <p>名字</p>
+                <p>年龄</p>
+                <p>操作</p>
+            </div>
+            <ul class="showlist">
+                <li v-for='(item,index) in dataArr'>
+                    <p>{{index+1}}</p>
+                    <p>{{item.name}}</p>
+                    <p>{{item.age}}</p>
+                    <p><button class="dialog" v-on:click="del(index)">删除</button></p>
+                </li>
+                <li v-show="dataArr.length>0">
+                    <p v-on:click="del(-2)"><button>清空全部</button></p>
+                </li>
+                <li v-show='dataArr.length==0'>
+                    <p>暂无数据</p>
+                </li>
+            </ul>
+        </div>
+        <div class="model">
+            <a href="javascript:;" class="close" v-on:click="close()">×</a>
+            <h4>您确认删除吗</h4>
+            <div class="btnbox"><button class="ok" v-on:click="ok(index)">确认</button><button class="cancle" v-on:click='close()'>取消</button></div>
+        </div>
+    </div>
+    <div class="mark"></div>
+
+  
+</body>
+</html>

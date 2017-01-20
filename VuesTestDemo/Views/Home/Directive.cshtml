@@ -1,0 +1,293 @@
+﻿@{
+    ViewBag.Title = "Directive";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <script src="~/Scripts/jquery-1.8.2.js"></script>
+    @*<script src="~/Scripts/vue-dev/dist/vue.min.js"></script>*@
+    <script src="~/Scripts/vue-dev/dist/vue.js"></script>
+    <script type="text/javascript">
+        //binding: 一个对象，包含以下属性：
+        //name: 指令名，不包括 v- 前缀。
+        //value: 指令的绑定值， 例如： v-my-directive="1 + 1"，value 的值是 2。
+        //oldValue: 指令绑定的前一个值，仅在 update 和 componentUpdated 钩子中可用。无论值是否改变都可用。
+        //expression: 绑定值的字符串形式。 例如 v-my-directive="1 + 1" ， expression 的值是 "1 + 1"。
+        //arg: 传给指令的参数。例如 v-my-directive:foo， arg 的值是 "foo"。
+        //modifiers: 一个包含修饰符的对象。 例如： v-my-directive.foo.bar, 修饰符对象 modifiers 的值是 { foo: true, bar: true }。
+        //vnode: Vue 编译生成的虚拟节点。
+
+        //添加自定义元素
+        //Vue.elementDirective("dd-chart", {
+        //    bind: function () {
+        //        console.log(this.el.className);
+        //    }
+        //});
+        //var demo1=new Vue()
+
+    </script>
+</head>
+<body>
+
+    <!-- 添加自定义元素-->
+    <dd-chart class="class1"></dd-chart>
+    <!-- 自定义指令 -->
+    <div id="demo2" v-directived:red="message">{{message}}</div>
+    <!-- 注册一个全局自定义指令 v-focus-->
+    <div id="demo3">
+        <input id="dirFocus" v-focus />
+    </div>
+
+    <!-- Vue.extend-->
+    <div id="demo4"></div>
+    <!-- filter-->
+    <div id="demo5">
+        @*<p>{{message | sum}}</p>*@
+        @*<p>{{message | cal 10 20}}</p>*@  <!--过滤器函数始终以表达式的值作为第一个参数。带引号的参数视为字符串，而不带引号的参数按表达式计算。-->
+        @*<p>{{message | sum | currency }}</p>*@ <!--添加两个过滤器,注意不要冲突-->
+        @*<input type="text" v-model="message | change">*@ <!--用户从input输入的数据在回传到model之前也可以先处理-->
+        <input type="text" v-model="message">
+        <p>{{message | sum}}</p>
+        @*<p>{{message | cal 10 20}}</p>*@  <!--过滤器函数始终以表达式的值作为第一个参数。带引号的参数视为字符串，而不带引号的参数按表达式计算。-->
+        <p>{{message | sum }}</p> <!--添加两个过滤器,注意不要冲突-->
+    </div>
+
+    <!-- component-->
+    <div id="demo6">
+        <my-component></my-component>
+    </div>
+
+    <!-- 使用props传递数据-->
+    <div id="demo7">
+        <div>组件实例的作用域是孤立的。这意味着不能并且不应该在子组件的模板内直接引用父组件的数据。可以使用 props 把数据传给子组件。</div>
+        <br />
+        <child msg="hello, vue.js1!"></child>
+    </div>
+
+    <!-- 动态Props 父子组件通信-->
+    <div id="demo8">
+        <input v-model="parentMsg" placeholder="please input parentMsg" />
+        <myhtml v-bind:message="parentMsg"></myhtml>
+    </div>
+
+    <!-- computed计算属性-->
+    <div id="demo9">
+        <input type="text" v-model="inputValue" />
+        <span>{{spanValue}}</span>
+    </div>
+    <br />
+    <!-- $watch 监视-->
+    <div id="demo10">
+        <input type="text" v-model="inputValue" />
+    </div>
+    <br />
+    <!-- 指令 -->
+    <div id="demo11">
+        <span v-text="text"></span>
+        <div v-html="html"></div>
+        <h1 v-show="isShow">123</h1>
+        <input type="text" v-model="inputVal" v-on:click="inputClick()" />
+        <h2 v-if="inputVal>10">if</h2>
+        <h2 v-else>else</h2>
+        <div v-for="item in items">
+            id:<span>{{item.id}}</span>
+            text:<span>{{item.text}}</span>
+        </div>
+        <span v-pre>{{ this will not be compiled }}</span>
+        <br />
+        <!-- 单个元素 -->
+        <span v-once>This will never change: {{msg}}</span>
+        <!-- 有子元素 -->
+        <div v-once>
+            <h1>comment</h1>
+            <input type="text" v-model="inputVal" v-on:click="inputClick()" />
+        </div>
+    </div>
+
+
+    <div class="form1">
+        <div>名字：<input type="text" id="name" v-model="name" placeholder="请输入名称" /></div>
+        <div>年龄：<input type="text" id="name" v-model="age" placeholder="请输入年龄" /></div>
+        <input type="button" v-on:click="testFun()" value="确认" />
+    </div>
+    <script>
+        //添加自定义指令
+        Vue.directive("directived", {
+            bind: function (el, binding, vnode) {
+                console.log('demo bound!')
+                el.style.color = "#fff";
+                el.style.backgroundColor = binding.arg;
+                el.innerHTML =
+                    '指令名name - ' + binding.name + '<br>' +
+                    '指令绑定值value - ' + binding.value + '<br>' +
+                    '指令绑定表达式expression - ' + binding.expression + '<br>' +
+                    '传入指令的参数argument - ' + binding.arg + '<br>'
+            }
+        });
+        var do2 = new Vue({
+            el: "#demo2",
+            data: {
+                message: "Hello demo21"
+            }
+        });
+
+        Vue.directive("focus", {
+            inserted: function (el) {
+                el.focus();
+            }
+        });
+        var do3 = new Vue({
+            el: "#dirFocus",
+        });
+        var do4 = Vue.extend({
+            template: "<p>{{firstName}} {{lastName}} and {{userName}}</p>",
+            data: function () {
+                return {
+                    firstName: "first",
+                    lastName: "last",
+                    userName: "feng"
+                }
+            }
+        });
+        new do4().$mount("#demo4");
+
+        //Demo5  <!-- filter-->
+        Vue.filter("sum", function (value) {
+            return value + 5;
+        });
+        Vue.filter("cal", function (value, begin, end) {
+            return value + begin + end;
+        });
+        Vue.filter("change", {
+            read: function (value) {
+                return value;
+            },
+            write: function (newVal, oldVal) {
+                console.log("newVal:" + newVal);
+                console.log("oldVal:" + oldVal);
+                return newVal;
+            }
+        });
+        var do5 = new Vue({
+            el: "#demo5",
+            data: {
+                message: "demo5"
+            },
+            //自定义在实例
+            //filters: {
+            //    sum: function (value) {
+            //        return value + 4;
+            //    }
+            //}
+        });
+        //component
+
+        var do6 = new Vue({
+            el: "#demo6",
+            data: {
+                message: "demo6"
+            },
+            components: {
+                'my-component': {
+                    template: '<div>1234</div>',
+
+                }
+            }
+        });
+
+        //demo7  <!-- 使用props传递数据-->
+        var do7 = new Vue({
+            el: "#demo7",
+            data: {
+                msg: "1"
+            },
+            components: {
+                'child': {
+                    //声明props属性
+                    props: ['msg'],
+                    //props可以用在模板内
+                    //可以用"this.msg"设置
+                    template: '<div>msg: {{msg}}</div>'
+                }
+            }
+        });
+
+        //demo8 动态Props
+        var do8 = new Vue({
+            el: "#demo8",
+            data: {
+                parentMsg: "demo8"
+            },
+            components: {
+                'myhtml': {
+                    props: ['message'],
+                    template: "<div>message: {{message}}</div>"
+                }
+
+            }
+        });
+
+        //computed计算属性
+        var do9 = new Vue({
+            el: "#demo9",
+            data: {
+                inputValue: "123"
+            },
+            computed: {
+                spanValue: function () {
+                    return this.inputValue + ".00";
+                }
+            }
+        });
+
+        //$watch
+        var do10 = new Vue({
+            el: "#demo10",
+            data: {
+                "inputValue": "demo10"
+            },
+            methods: {
+                InputChange: function (newVal, oldVal) {
+                    alert("值发生变化,newVal:" + newVal + ",oldVal:" + oldVal)
+                }
+            },
+            watch: {
+                "inputValue": "InputChange"
+            }
+        });
+
+        //demo11 指令
+        var do11 = new Vue({
+            el: "#demo11",
+            data: {
+                text: "spanText",
+                html: "<p>innerHtml</p>",
+                isShow: true,
+                inputVal: 110,
+                items: [{
+                    id: "1",
+                    text:"001"
+                }, {
+                    id: "2",
+                    text:"002"
+                }, {
+                    id: "3",
+                    text:"003"
+                }]                   
+                    
+            },
+            methods: {
+                inputClick: function () {
+                    console.log("1")
+                }
+            }
+        });
+
+
+       
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,636 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F2022F1D-346B-4695-AB59-53886B5B9AF0}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>VuesTestDemo</RootNamespace>
+    <AssemblyName>VuesTestDemo</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <TypeScriptToolsVersion>1.5</TypeScriptToolsVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Activities" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Activities" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Mvc.FixedDisplayModes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.FixedDisplayModes.1.0.0\lib\net40\Microsoft.Web.Mvc.FixedDisplayModes.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.30506.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.30506.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.30506.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.30506.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.0.0\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Providers">
+      <HintPath>..\packages\Microsoft.AspNet.Providers.Core.1.2\lib\net40\System.Web.Providers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.30506.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.3.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.3.0\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery.ui.accordion.css" />
+    <Content Include="Content\themes\base\jquery.ui.all.css" />
+    <Content Include="Content\themes\base\jquery.ui.autocomplete.css" />
+    <Content Include="Content\themes\base\jquery.ui.base.css" />
+    <Content Include="Content\themes\base\jquery.ui.button.css" />
+    <Content Include="Content\themes\base\jquery.ui.core.css" />
+    <Content Include="Content\themes\base\jquery.ui.datepicker.css" />
+    <Content Include="Content\themes\base\jquery.ui.dialog.css" />
+    <Content Include="Content\themes\base\jquery.ui.progressbar.css" />
+    <Content Include="Content\themes\base\jquery.ui.resizable.css" />
+    <Content Include="Content\themes\base\jquery.ui.selectable.css" />
+    <Content Include="Content\themes\base\jquery.ui.slider.css" />
+    <Content Include="Content\themes\base\jquery.ui.tabs.css" />
+    <Content Include="Content\themes\base\jquery.ui.theme.css" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\minified\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.accordion.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.autocomplete.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.button.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.core.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.datepicker.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.dialog.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.progressbar.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.resizable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.selectable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Content\json1.json" />
+    <Content Include="Content\json1 - 复制.json" />
+    <None Include="Scripts\jquery-1.8.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.8.2.js" />
+    <Content Include="Scripts\jquery-1.8.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui-1.8.24.js" />
+    <Content Include="Scripts\jquery-ui-1.8.24.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\knockout-2.2.0.debug.js" />
+    <Content Include="Scripts\knockout-2.2.0.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\vue-dev\dist\build.js" />
+    <Content Include="Scripts\vue-dev\dist\vue-router.common.js" />
+    <Content Include="Scripts\vue-dev\dist\vue-router.js" />
+    <Content Include="Scripts\vue-dev\dist\vue-router.min.js" />
+    <Content Include="Scripts\vue-dev\webpack.config.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Scripts\vue-dev\benchmarks\big-table\demo.css" />
+    <Content Include="Scripts\vue-dev\benchmarks\big-table\index.html" />
+    <Content Include="Scripts\vue-dev\benchmarks\big-table\style.css" />
+    <Content Include="Scripts\vue-dev\benchmarks\dbmon\app.js" />
+    <Content Include="Scripts\vue-dev\benchmarks\dbmon\ENV.js" />
+    <Content Include="Scripts\vue-dev\benchmarks\dbmon\index.html" />
+    <Content Include="Scripts\vue-dev\benchmarks\dbmon\lib\bootstrap.min.css" />
+    <Content Include="Scripts\vue-dev\benchmarks\dbmon\lib\memory-stats.js" />
+    <Content Include="Scripts\vue-dev\benchmarks\dbmon\lib\monitor.js" />
+    <Content Include="Scripts\vue-dev\benchmarks\dbmon\lib\styles.css" />
+    <Content Include="Scripts\vue-dev\benchmarks\reorder-list\index.html" />
+    <Content Include="Scripts\vue-dev\benchmarks\ssr\common.js" />
+    <Content Include="Scripts\vue-dev\benchmarks\ssr\renderToStream.js" />
+    <Content Include="Scripts\vue-dev\benchmarks\ssr\renderToString.js" />
+    <Content Include="Scripts\vue-dev\benchmarks\svg\index.html" />
+    <Content Include="Scripts\vue-dev\benchmarks\uptime\index.html" />
+    <Content Include="Scripts\vue-dev\build\alias.js" />
+    <Content Include="Scripts\vue-dev\build\build.js" />
+    <Content Include="Scripts\vue-dev\build\config.js" />
+    <Content Include="Scripts\vue-dev\build\get-weex-version.js" />
+    <Content Include="Scripts\vue-dev\build\karma.base.config.js" />
+    <Content Include="Scripts\vue-dev\build\karma.cover.config.js" />
+    <Content Include="Scripts\vue-dev\build\karma.dev.config.js" />
+    <Content Include="Scripts\vue-dev\build\karma.sauce.config.js" />
+    <Content Include="Scripts\vue-dev\build\karma.unit.config.js" />
+    <Content Include="Scripts\vue-dev\build\nightwatch.config.js" />
+    <Content Include="Scripts\vue-dev\dist\vue.common.js" />
+    <Content Include="Scripts\vue-dev\dist\vue.js" />
+    <Content Include="Scripts\vue-dev\dist\vue.min.js" />
+    <Content Include="Scripts\vue-dev\dist\vue.runtime.common.js" />
+    <Content Include="Scripts\vue-dev\dist\vue.runtime.js" />
+    <Content Include="Scripts\vue-dev\dist\vue.runtime.min.js" />
+    <Content Include="Scripts\vue-dev\examples\commits\app.js" />
+    <Content Include="Scripts\vue-dev\examples\commits\index.html" />
+    <Content Include="Scripts\vue-dev\examples\elastic-header\index.html" />
+    <Content Include="Scripts\vue-dev\examples\elastic-header\style.css" />
+    <Content Include="Scripts\vue-dev\examples\firebase\app.js" />
+    <Content Include="Scripts\vue-dev\examples\firebase\index.html" />
+    <Content Include="Scripts\vue-dev\examples\firebase\style.css" />
+    <Content Include="Scripts\vue-dev\examples\grid\grid.js" />
+    <Content Include="Scripts\vue-dev\examples\grid\index.html" />
+    <Content Include="Scripts\vue-dev\examples\grid\style.css" />
+    <Content Include="Scripts\vue-dev\examples\markdown\index.html" />
+    <Content Include="Scripts\vue-dev\examples\markdown\style.css" />
+    <Content Include="Scripts\vue-dev\examples\modal\index.html" />
+    <Content Include="Scripts\vue-dev\examples\modal\style.css" />
+    <Content Include="Scripts\vue-dev\examples\move-animations\index.html" />
+    <Content Include="Scripts\vue-dev\examples\select2\index.html" />
+    <Content Include="Scripts\vue-dev\examples\svg\index.html" />
+    <Content Include="Scripts\vue-dev\examples\svg\style.css" />
+    <Content Include="Scripts\vue-dev\examples\svg\svg.js" />
+    <Content Include="Scripts\vue-dev\examples\todomvc\app.js" />
+    <Content Include="Scripts\vue-dev\examples\todomvc\index.html" />
+    <Content Include="Scripts\vue-dev\examples\tree\index.html" />
+    <Content Include="Scripts\vue-dev\examples\tree\tree.js" />
+    <Content Include="Scripts\vue-dev\flow\compiler.js" />
+    <Content Include="Scripts\vue-dev\flow\component.js" />
+    <Content Include="Scripts\vue-dev\flow\global-api.js" />
+    <Content Include="Scripts\vue-dev\flow\modules.js" />
+    <Content Include="Scripts\vue-dev\flow\options.js" />
+    <Content Include="Scripts\vue-dev\flow\ssr.js" />
+    <Content Include="Scripts\vue-dev\flow\vnode.js" />
+    <Content Include="Scripts\vue-dev\packages\vue-server-renderer\build.js" />
+    <Content Include="Scripts\vue-dev\packages\vue-server-renderer\index.js" />
+    <Content Include="Scripts\vue-dev\packages\vue-template-compiler\build.js" />
+    <Content Include="Scripts\vue-dev\packages\vue-template-compiler\index.js" />
+    <Content Include="Scripts\vue-dev\packages\weex-template-compiler\build.js" />
+    <Content Include="Scripts\vue-dev\packages\weex-template-compiler\index.js" />
+    <Content Include="Scripts\vue-dev\packages\weex-vue-framework\index.js" />
+    <Content Include="Scripts\vue-dev\src\compiler\codegen\events.js" />
+    <Content Include="Scripts\vue-dev\src\compiler\codegen\index.js" />
+    <Content Include="Scripts\vue-dev\src\compiler\directives\bind.js" />
+    <Content Include="Scripts\vue-dev\src\compiler\directives\index.js" />
+    <Content Include="Scripts\vue-dev\src\compiler\error-detector.js" />
+    <Content Include="Scripts\vue-dev\src\compiler\helpers.js" />
+    <Content Include="Scripts\vue-dev\src\compiler\index.js" />
+    <Content Include="Scripts\vue-dev\src\compiler\optimizer.js" />
+    <Content Include="Scripts\vue-dev\src\compiler\parser\entity-decoder.js" />
+    <Content Include="Scripts\vue-dev\src\compiler\parser\filter-parser.js" />
+    <Content Include="Scripts\vue-dev\src\compiler\parser\html-parser.js" />
+    <Content Include="Scripts\vue-dev\src\compiler\parser\index.js" />
+    <Content Include="Scripts\vue-dev\src\compiler\parser\text-parser.js" />
+    <Content Include="Scripts\vue-dev\src\core\components\index.js" />
+    <Content Include="Scripts\vue-dev\src\core\components\keep-alive.js" />
+    <Content Include="Scripts\vue-dev\src\core\config.js" />
+    <Content Include="Scripts\vue-dev\src\core\global-api\assets.js" />
+    <Content Include="Scripts\vue-dev\src\core\global-api\extend.js" />
+    <Content Include="Scripts\vue-dev\src\core\global-api\index.js" />
+    <Content Include="Scripts\vue-dev\src\core\global-api\mixin.js" />
+    <Content Include="Scripts\vue-dev\src\core\global-api\use.js" />
+    <Content Include="Scripts\vue-dev\src\core\index.js" />
+    <Content Include="Scripts\vue-dev\src\core\instance\events.js" />
+    <Content Include="Scripts\vue-dev\src\core\instance\index.js" />
+    <Content Include="Scripts\vue-dev\src\core\instance\init.js" />
+    <Content Include="Scripts\vue-dev\src\core\instance\lifecycle.js" />
+    <Content Include="Scripts\vue-dev\src\core\instance\proxy.js" />
+    <Content Include="Scripts\vue-dev\src\core\instance\render.js" />
+    <Content Include="Scripts\vue-dev\src\core\instance\state.js" />
+    <Content Include="Scripts\vue-dev\src\core\observer\array.js" />
+    <Content Include="Scripts\vue-dev\src\core\observer\dep.js" />
+    <Content Include="Scripts\vue-dev\src\core\observer\index.js" />
+    <Content Include="Scripts\vue-dev\src\core\observer\scheduler.js" />
+    <Content Include="Scripts\vue-dev\src\core\observer\watcher.js" />
+    <Content Include="Scripts\vue-dev\src\core\util\debug.js" />
+    <Content Include="Scripts\vue-dev\src\core\util\env.js" />
+    <Content Include="Scripts\vue-dev\src\core\util\index.js" />
+    <Content Include="Scripts\vue-dev\src\core\util\lang.js" />
+    <Content Include="Scripts\vue-dev\src\core\util\options.js" />
+    <Content Include="Scripts\vue-dev\src\core\util\props.js" />
+    <Content Include="Scripts\vue-dev\src\core\vdom\create-component.js" />
+    <Content Include="Scripts\vue-dev\src\core\vdom\create-element.js" />
+    <Content Include="Scripts\vue-dev\src\core\vdom\helpers\index.js" />
+    <Content Include="Scripts\vue-dev\src\core\vdom\helpers\merge-hook.js" />
+    <Content Include="Scripts\vue-dev\src\core\vdom\helpers\normalize-children.js" />
+    <Content Include="Scripts\vue-dev\src\core\vdom\helpers\update-listeners.js" />
+    <Content Include="Scripts\vue-dev\src\core\vdom\modules\directives.js" />
+    <Content Include="Scripts\vue-dev\src\core\vdom\modules\index.js" />
+    <Content Include="Scripts\vue-dev\src\core\vdom\modules\ref.js" />
+    <Content Include="Scripts\vue-dev\src\core\vdom\patch.js" />
+    <Content Include="Scripts\vue-dev\src\core\vdom\vnode.js" />
+    <Content Include="Scripts\vue-dev\src\entries\web-compiler.js" />
+    <Content Include="Scripts\vue-dev\src\entries\web-runtime-with-compiler.js" />
+    <Content Include="Scripts\vue-dev\src\entries\web-runtime.js" />
+    <Content Include="Scripts\vue-dev\src\entries\web-server-renderer.js" />
+    <Content Include="Scripts\vue-dev\src\entries\weex-compiler.js" />
+    <Content Include="Scripts\vue-dev\src\entries\weex-framework.js" />
+    <Content Include="Scripts\vue-dev\src\platforms\web\compiler\directives\html.js" />
+    <Content Include="Scripts\vue-dev\src\platforms\web\compiler\directives\index.js" />
+    <Content Include="Scripts\vue-dev\src\platforms\web\compiler\directives\model.js" />
+    <Content Include="Scripts\vue-dev\src\platforms\web\compiler\directives\text.js" />
+    <Content Include="Scripts\vue-dev\src\platforms\web\compiler\index.js" />
+    <Content Include="Scripts\vue-dev\src\platforms\web\compiler\modules\class.js" />
+    <Content Include="Scripts\vue-dev\src\platforms\web\compiler\modules\index.js" />
+    <Content Include="Scripts\vue-dev\src\platforms\web\compiler\modules\style.js" />
+    <Content Include="Scripts\vue-dev\src\platforms\web\compiler\util.js" />
+    <Content Include="Scripts\vue-dev\src\platforms\web\runtime\class-util.js" />
+    <Content Include="Scripts\vue-dev\src\platforms\web\runtime\components\index.js" />
+    <Content Include="Scripts\vue-dev\src\platforms\web\runtime\components\transition-group.js" />
+    <Content Include="Scripts\vue-dev\src\platforms\web\runtime\components\transition.js" />
+    <Content Include="Scripts\vue-dev\src\platforms\web\runtime\directives\index.js" />
+    <Content Include="Scripts\vue-dev\src\platforms\web\runtime\directives\model.js" />
+    <Content Include="Scripts\vue-dev\src\platforms\web\runtime\directives\show.js" />
+    <Content Include="Scripts\vue-dev\src\platforms\web\runtime\modules\attrs.js" />
+    <Content Include="Scripts\vue-dev\src\platforms\web\runtime\modules\class.js" />
+    <Content Include="Scripts\vue-dev\src\platforms\web\runtime\modules\dom-props.js" />
+    <Content Include="Scripts\vue-dev\src\platforms\web\runtime\modules\events.js" />
+    <Content Include="Scripts\vue-dev\src\platforms\web\runtime\modules\index.js" />
+    <Content Include="Scripts\vue-dev\src\platforms\web\runtime\modules\style.js" />
+    <Content Include="Scripts\vue-dev\src\platforms\web\runtime\modules\transition.js" />
+    <Content Include="Scripts\vue-dev\src\platforms\web\runtime\node-ops.js" />
+    <Content Include="Scripts\vue-dev\src\platforms\web\runtime\patch.js" />
+    <Content Include="Scripts\vue-dev\src\platforms\web\runtime\transition-util.js" />
+    <Content Include="Scripts\vue-dev\src\platforms\web\server\directives\index.js" />
+    <Content Include="Scripts\vue-dev\src\platforms\web\server\directives\show.js" />
+    <Content Include="Scripts\vue-dev\src\platforms\web\server\modules\attrs.js" />
+    <Content Include="Scripts\vue-dev\src\platforms\web\server\modules\class.js" />
+    <Content Include="Scripts\vue-dev\src\platforms\web\server\modules\dom-props.js" />
+    <Content Include="Scripts\vue-dev\src\platforms\web\server\modules\index.js" />
+    <Content Include="Scripts\vue-dev\src\platforms\web\server\modules\style.js" />
+    <Content Include="Scripts\vue-dev\src\platforms\web\server\util.js" />
+    <Content Include="Scripts\vue-dev\src\platforms\web\util\attrs.js" />
+    <Content Include="Scripts\vue-dev\src\platforms\web\util\class.js" />
+    <Content Include="Scripts\vue-dev\src\platforms\web\util\compat.js" />
+    <Content Include="Scripts\vue-dev\src\platforms\web\util\element.js" />
+    <Content Include="Scripts\vue-dev\src\platforms\web\util\index.js" />
+    <Content Include="Scripts\vue-dev\src\platforms\web\util\style.js" />
+    <Content Include="Scripts\vue-dev\src\platforms\weex\compiler\directives\index.js" />
+    <Content Include="Scripts\vue-dev\src\platforms\weex\compiler\directives\model.js" />
+    <Content Include="Scripts\vue-dev\src\platforms\weex\compiler\index.js" />
+    <Content Include="Scripts\vue-dev\src\platforms\weex\compiler\modules\append.js" />
+    <Content Include="Scripts\vue-dev\src\platforms\weex\compiler\modules\class.js" />
+    <Content Include="Scripts\vue-dev\src\platforms\weex\compiler\modules\index.js" />
+    <Content Include="Scripts\vue-dev\src\platforms\weex\compiler\modules\style.js" />
+    <Content Include="Scripts\vue-dev\src\platforms\weex\runtime\config.js" />
+    <Content Include="Scripts\vue-dev\src\platforms\weex\runtime\directives\index.js" />
+    <Content Include="Scripts\vue-dev\src\platforms\weex\runtime\index.js" />
+    <Content Include="Scripts\vue-dev\src\platforms\weex\runtime\modules\attrs.js" />
+    <Content Include="Scripts\vue-dev\src\platforms\weex\runtime\modules\class.js" />
+    <Content Include="Scripts\vue-dev\src\platforms\weex\runtime\modules\events.js" />
+    <Content Include="Scripts\vue-dev\src\platforms\weex\runtime\modules\index.js" />
+    <Content Include="Scripts\vue-dev\src\platforms\weex\runtime\modules\style.js" />
+    <Content Include="Scripts\vue-dev\src\platforms\weex\runtime\node-ops.js" />
+    <Content Include="Scripts\vue-dev\src\platforms\weex\runtime\patch.js" />
+    <Content Include="Scripts\vue-dev\src\platforms\weex\util\index.js" />
+    <Content Include="Scripts\vue-dev\src\server\create-bundle-renderer.js" />
+    <Content Include="Scripts\vue-dev\src\server\create-renderer.js" />
+    <Content Include="Scripts\vue-dev\src\server\render-stream.js" />
+    <Content Include="Scripts\vue-dev\src\server\render.js" />
+    <Content Include="Scripts\vue-dev\src\server\run-in-vm.js" />
+    <Content Include="Scripts\vue-dev\src\server\write.js" />
+    <Content Include="Scripts\vue-dev\src\sfc\parser.js" />
+    <Content Include="Scripts\vue-dev\src\shared\util.js" />
+    <Content Include="Scripts\vue-dev\test\e2e\runner.js" />
+    <Content Include="Scripts\vue-dev\test\e2e\specs\commits.js" />
+    <Content Include="Scripts\vue-dev\test\e2e\specs\grid.js" />
+    <Content Include="Scripts\vue-dev\test\e2e\specs\markdown.js" />
+    <Content Include="Scripts\vue-dev\test\e2e\specs\modal.js" />
+    <Content Include="Scripts\vue-dev\test\e2e\specs\select2.js" />
+    <Content Include="Scripts\vue-dev\test\e2e\specs\svg.js" />
+    <Content Include="Scripts\vue-dev\test\e2e\specs\todomvc.js" />
+    <Content Include="Scripts\vue-dev\test\e2e\specs\tree.js" />
+    <Content Include="Scripts\vue-dev\test\helpers\classlist.js" />
+    <Content Include="Scripts\vue-dev\test\helpers\to-equal.js" />
+    <Content Include="Scripts\vue-dev\test\helpers\to-have-been-warned.js" />
+    <Content Include="Scripts\vue-dev\test\helpers\trigger-event.js" />
+    <Content Include="Scripts\vue-dev\test\helpers\vdom.js" />
+    <Content Include="Scripts\vue-dev\test\helpers\wait-for-update.js" />
+    <Content Include="Scripts\vue-dev\test\ssr\fixtures\app.js" />
+    <Content Include="Scripts\vue-dev\test\ssr\fixtures\cache.js" />
+    <Content Include="Scripts\vue-dev\test\ssr\fixtures\error.js" />
+    <Content Include="Scripts\vue-dev\test\ssr\ssr-bundle-render.spec.js" />
+    <Content Include="Scripts\vue-dev\test\ssr\ssr-stream.spec.js" />
+    <Content Include="Scripts\vue-dev\test\ssr\ssr-string.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\features\component\component-async.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\features\component\component-keep-alive.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\features\component\component-scoped-slot.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\features\component\component-slot.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\features\component\component.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\features\directives\bind.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\features\directives\class.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\features\directives\cloak.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\features\directives\for.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\features\directives\html.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\features\directives\if.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\features\directives\model-checkbox.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\features\directives\model-component.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\features\directives\model-dynamic.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\features\directives\model-file.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\features\directives\model-parse.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\features\directives\model-radio.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\features\directives\model-select.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\features\directives\model-text.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\features\directives\on.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\features\directives\once.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\features\directives\pre.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\features\directives\show.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\features\directives\static-style-parser.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\features\directives\style.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\features\directives\text.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\features\filter\filter.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\features\global-api\assets.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\features\global-api\compile.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\features\global-api\config.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\features\global-api\extend.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\features\global-api\mixin.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\features\global-api\set-delete.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\features\global-api\use.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\features\instance\init.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\features\instance\methods-data.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\features\instance\methods-events.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\features\instance\methods-lifecycle.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\features\instance\properties.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\features\instance\render-proxy.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\features\options\components.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\features\options\computed.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\features\options\data.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\features\options\delimiters.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\features\options\directives.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\features\options\el.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\features\options\extends.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\features\options\functional.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\features\options\lifecycle.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\features\options\methods.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\features\options\mixins.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\features\options\name.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\features\options\parent.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\features\options\props.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\features\options\propsData.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\features\options\render.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\features\options\template.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\features\options\watch.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\features\options\_scopeId.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\features\ref.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\features\transition\inject-styles.js" />
+    <Content Include="Scripts\vue-dev\test\unit\features\transition\transition-group.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\features\transition\transition-mode.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\features\transition\transition.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\index.js" />
+    <Content Include="Scripts\vue-dev\test\unit\modules\compiler\codegen.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\modules\compiler\compiler-options.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\modules\compiler\optimizer.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\modules\compiler\parser.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\modules\observer\observer.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\modules\observer\scheduler.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\modules\observer\watcher.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\modules\sfc\sfc-parser.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\modules\util\next-tick.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\modules\vdom\create-component.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\modules\vdom\create-element.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\modules\vdom\modules\attrs.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\modules\vdom\modules\class.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\modules\vdom\modules\directive.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\modules\vdom\modules\dom-props.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\modules\vdom\modules\events.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\modules\vdom\modules\style.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\modules\vdom\patch\children.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\modules\vdom\patch\edge-cases.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\modules\vdom\patch\element.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\modules\vdom\patch\hooks.spec.js" />
+    <Content Include="Scripts\vue-dev\test\unit\modules\vdom\patch\hydration.spec.js" />
+    <Content Include="Scripts\vue-dev\test\weex\compiler\append.spec.js" />
+    <Content Include="Scripts\vue-dev\test\weex\compiler\class.spec.js" />
+    <Content Include="Scripts\vue-dev\test\weex\compiler\compile.spec.js" />
+    <Content Include="Scripts\vue-dev\test\weex\compiler\style.spec.js" />
+    <Content Include="Scripts\vue-dev\test\weex\compiler\v-model.spec.js" />
+    <Content Include="Scripts\vue-dev\test\weex\helpers\index.js" />
+    <Content Include="Scripts\vue-dev\test\weex\runtime\attrs.spec.js" />
+    <Content Include="Scripts\vue-dev\test\weex\runtime\class.spec.js" />
+    <Content Include="Scripts\vue-dev\test\weex\runtime\events.spec.js" />
+    <Content Include="Scripts\vue-dev\test\weex\runtime\framework.spec.js" />
+    <Content Include="Scripts\vue-dev\test\weex\runtime\node.spec.js" />
+    <Content Include="Scripts\vue-dev\test\weex\runtime\style.spec.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Scripts\vue-dev\.babelrc" />
+    <Content Include="Scripts\vue-dev\.eslintignore" />
+    <Content Include="Scripts\vue-dev\.eslintrc" />
+    <Content Include="Scripts\vue-dev\.flowconfig" />
+    <Content Include="Scripts\vue-dev\.gitignore" />
+    <Content Include="Scripts\vue-dev\BACKERS.md" />
+    <Content Include="Scripts\vue-dev\benchmarks\ssr\README.md" />
+    <Content Include="Scripts\vue-dev\build\ci.sh" />
+    <Content Include="Scripts\vue-dev\build\git-hooks\pre-commit" />
+    <Content Include="Scripts\vue-dev\build\release-weex.sh" />
+    <Content Include="Scripts\vue-dev\build\release.sh" />
+    <Content Include="Scripts\vue-dev\circle.yml" />
+    <Content Include="Scripts\vue-dev\dist\README.md" />
+    <Content Include="Scripts\vue-dev\examples\todomvc\readme.md" />
+    <Content Include="Scripts\vue-dev\LICENSE" />
+    <Content Include="Scripts\vue-dev\package.json" />
+    <Content Include="Scripts\vue-dev\packages\vue-server-renderer\package.json" />
+    <Content Include="Scripts\vue-dev\packages\vue-server-renderer\README.md" />
+    <Content Include="Scripts\vue-dev\packages\vue-template-compiler\package.json" />
+    <Content Include="Scripts\vue-dev\packages\vue-template-compiler\README.md" />
+    <Content Include="Scripts\vue-dev\packages\weex-template-compiler\package.json" />
+    <Content Include="Scripts\vue-dev\packages\weex-template-compiler\README.md" />
+    <Content Include="Scripts\vue-dev\packages\weex-vue-framework\package.json" />
+    <Content Include="Scripts\vue-dev\packages\weex-vue-framework\README.md" />
+    <Content Include="Scripts\vue-dev\README.md" />
+    <Content Include="Scripts\vue-dev\test\e2e\.eslintrc" />
+    <Content Include="Scripts\vue-dev\test\helpers\.eslintrc" />
+    <Content Include="Scripts\vue-dev\test\ssr\.eslintrc" />
+    <Content Include="Scripts\vue-dev\test\ssr\jasmine.json" />
+    <Content Include="Scripts\vue-dev\test\unit\.eslintrc" />
+    <Content Include="Scripts\vue-dev\test\weex\.eslintrc" />
+    <Content Include="Scripts\vue-dev\test\weex\jasmine.json" />
+    <Content Include="Scripts\vue-dev\yarn.lock" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\FormIndex.cshtml" />
+    <Content Include="Views\Home\Directive.cshtml" />
+    <Content Include="Views\Home\FormTestIndex.cshtml" />
+    <Content Include="Views\Home\Router.cshtml" />
+    <Content Include="Views\Home\ExportDemo.cshtml" />
+    <Content Include="Scripts\vue-dev\info.vue" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Content\out\" />
+    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Content\test.ts" />
+    <TypeScriptCompile Include="Scripts\file1.ts" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <TypeScriptModuleKind>none</TypeScriptModuleKind>
+    <TypeScriptTarget>ES6</TypeScriptTarget>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>35945</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:35945/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

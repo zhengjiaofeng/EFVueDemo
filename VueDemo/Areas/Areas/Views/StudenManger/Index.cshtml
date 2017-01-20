@@ -1,0 +1,295 @@
+﻿@{
+    Layout = "~/Views/Shared/_layoutPage.cshtml";
+}
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link href="~/Scripts/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/Scripts/bootstrap/css/bootstrap-theme.css" rel="stylesheet" />
+    @*<script src="~/Scripts/jquery-1.8.2.js"></script>*@
+    @*<script src="~/Scripts/bootstrap-3.2.0/js/jquery.js"></script>*@
+    <script src="~/Scripts/jquery-1.11.1.min.js"></script>
+    <script src="~/Scripts/bootstrap/js/bootstrap.js"></script>
+    <script src="~/Scripts/bootstrap-3.2.0/js/bootstrap-paginator.js"></script>
+    <script src="~/Scripts/dist/vue.js"></script>
+    <style type="text/css">
+        .table > thead > tr > th {
+            padding: 0px;
+        }
+    </style>
+
+    <script type="text/javascript">
+        $(function () {
+            ////json日期格式转换为正常格式
+            Vue.filter("jsonDateFormat", function (value) {
+
+                try {
+                    var date = new Date(parseInt(value.replace("/Date(", "").replace(")/", ""), 10));
+                    var month = date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1;
+                    var day = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
+                    var hours = date.getHours();
+                    var minutes = date.getMinutes();
+                    var seconds = date.getSeconds();
+                    var milliseconds = date.getMilliseconds();
+                    return date.getFullYear() + "-" + month + "-" + day + " " + hours + ":" + minutes + ":" + seconds + "." + milliseconds;
+
+                } catch (ex) {
+                    return "";
+                }
+            });
+            var stuentManger = new Vue({
+                el: "#table-body",
+                data: {
+                    contents: [],
+                    total: 0,//总页数
+                    currentPage: 0//当前页数
+                },
+                methods: {
+                    loadStudenList: function (page) {
+                        var _stuentManger = this;
+                        $.ajax({
+                            url: " /Areas/StudenManger/GetUserStudenList?currentPage=" + page,
+                            type: "get",
+                            dataType: "json",
+                            async: false,
+                            success: function (data) {
+                                _stuentManger.$data.contents = [];
+                                $.each(data.row, function (i, v) {
+                                    _stuentManger.$data.contents.push(v);
+                                });
+                                _stuentManger.$data.total = data.total;
+                                _stuentManger.$data.currentPage = data.currentPage;
+                            }
+                        });
+                    },
+                    loadPagintion: function () {
+                        var _stuentManger = this;
+                        var current = this.currentPage == 0 ? 1 : this.currentPage;
+                        var totalPage = this.total;
+                        var options = {
+                            // bootstrapMajorVersion: 2,
+                            currentPage: current, //当前页数
+                            totalPages: totalPage, //总页数
+                            numberOfPages: 4,
+                            itemTexts: function (type, page, current) {
+                                switch (type) {
+                                    case "first":
+                                        return "首页";
+                                    case "prev":
+                                        return "上一页";
+                                    case "next":
+                                        return "下一页";
+                                    case "last":
+                                        return "末页";
+                                    case "page":
+                                        return page;
+                                }
+                            }, tooltipTitles: function (type, page, current) {
+                                switch (type) {
+                                    case "first":
+                                        return "首页";
+                                    case "prev":
+                                        return "上一页";
+                                    case "next":
+                                        return "下一页";
+                                    case "last":
+                                        return "末页";
+                                    case "page":
+                                        return (page === current) ? "当前第" + page + "页" : "第" + page + "页";
+                                }
+                            }, onPageClicked: function (event, originalEvent, type, page) {
+                                // location.href = "/StudenManger/GetUserStudenList?&currentPage=" + page;
+                                _stuentManger.loadStudenList(page);
+                            }
+                        }
+                        $('#pagination').bootstrapPaginator(options);
+                    },
+                    edit: function (index) {
+                        var _stuentManger = this;
+                        $("modal").modal({
+                            keyboard: true
+                        });
+
+                        $("#form input").each(function () {
+                            var name = $(this).attr("name");
+                            var value = _stuentManger.$data.contents[index][name] == null ? "" : _stuentManger.$data.contents[index][name];
+                            if (name != "is_graduation") {
+                                $(this).val(value);
+                            } else {
+                                $(this).prop("checked", value);
+                            }
+
+                        });
+                    }
+
+                },
+                //初始化数据
+                created: function () {
+                    this.loadStudenList(1);
+                    this.loadPagintion();
+
+                },
+                //自定义过滤器
+                filters: {
+                    genderToString: function (value) {
+                        return value == "0" ? "男" : value == "1" ? "女" : "";
+                    },
+                    is_graduationToString: function (value) {
+                        return value == false ? "否" : "是";
+                    }
+                }
+            });
+            var studenSave = new Vue({
+                el: "#studenSave",
+                methods: {
+                    //保存
+                    save: function () {
+                        $.ajax({
+                            url: "/Areas/StudenManger/UpdateStudentUser",
+                            type: "post",
+                            dataType: "json",
+                            data: $("#form").serialize(),
+                            success: function (data) {
+                                if (data.isSuccess) {
+                                    window.location.reload();
+                                }
+                            }
+                        });
+                    }
+                }
+            });
+        });
+
+    </script>
+</head>
+<body>
+    <div class="row">
+        <table class="table table-condensed table-striped table-hover" style="word-break: break-all;">
+            <thead>
+                <tr>
+                    <th width="10%">用户名</th>
+                    <th width="10%">学号</th>
+                    <th width="15%">手机号码</th>
+                    <th width="10%">邮箱</th>
+                    <th width="10%">姓名</th>
+                    <th width="10%">性别</th>
+                    <th width="10%">是否毕业</th>
+                    <th width="15%">创建时间</th>
+                    <th width="10%">操作</th>
+                </tr>
+            </thead>
+            <tbody id="table-body">
+                <tr v-for="(item,index) in contents">
+                    <td>{{item.user_login_name}}</td>
+                    <td>{{item.user_code}}</td>
+                    <td>{{item.user_mobile}}</td>
+                    <td>{{item.user_email}}</td>
+                    <td>{{item.user_name}}</td>
+                    <td>{{item.user_gender|genderToString}}</td>
+                    <td>{{item.is_graduation|is_graduationToString}}</td>
+                    <td>{{item.create_time|jsonDateFormat}}</td>
+                    <td>
+                        <a href="#modal" data-toggle="modal" v-on:click="edit(index)" data-url="/Areas/StudenManger/edi" class="btn btn-default btn-sm">
+                            编辑
+                        </a>
+                        @*<a data-target="#modal" data-toggle="modal" class="btn btn-default btn-sm">
+                                编辑
+                            </a>*@
+                    </td>
+                </tr>
+
+
+            </tbody>
+        </table>
+        <div id="pagination" class="pagination">
+
+        </div>
+
+        <!-- 编辑 -->
+        <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                            &times;
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            学生信息
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal" id="form">
+                            <div class="row form-group">
+                                    <input class="form-control" type="hidden" id="id" name="id"  />
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-md-3 control-label">
+                                    <label for="user_code">
+                                        用户名
+                                    </label>
+                                </div>
+                                <div class="col-md-8 controls">
+                                    <input class="form-control" type="text" id="user_login_name" name="user_login_name" v-model="123" />
+                                </div>
+                            </div>
+
+                            <div class="row form-group">
+                                <div class="col-md-3 control-label">
+                                    <label for="user_code">
+                                        学号
+                                    </label>
+                                </div>
+                                <div class="col-md-8 controls">
+                                    <input class="form-control" type="text" id="user_code" name="user_code" />
+                                </div>
+                            </div>
+
+                            <div class="row form-group">
+                                <div class="col-md-3 control-label">
+                                    <label for="user_code">
+                                        姓名
+                                    </label>
+                                </div>
+                                <div class="col-md-8 controls">
+                                    <input class="form-control" type="text" id="user_name" name="user_name" />
+                                </div>
+                            </div>
+
+                            <div class="row form-group">
+                                <div class="col-md-3 control-label">
+                                    <label for="user_code">
+                                        手机
+                                    </label>
+                                </div>
+                                <div class="col-md-8 controls">
+                                    <input class="form-control" type="text" id="user_mobile" name="user_mobile" />
+                                </div>
+                            </div>
+
+                            <div class="row form-group">
+                                <div class="col-md-3 control-label">
+                                    <label for="user_code">
+                                        是否毕业
+                                    </label>
+                                </div>
+                                <div class="col-md-8 controls">
+                                    <input id="is_graduation" name="is_graduation" style="width: 20px;height: 20px;" type="checkbox" checked="checked" >
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">
+                            关闭
+                        </button>
+                        <button type="button" class="btn btn-primary" v-on:click="save()" id="studenSave">
+                            保存
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

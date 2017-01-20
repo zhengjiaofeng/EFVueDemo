@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+
+<script src="~/Scripts/jquery-1.8.2.js"></script>
+<script src="~/Scripts/jquery-1.8.2.min.js"></script>
+<div>
+    @*<form method="post" action="/SendMail/Send">*@
+    <form  >
+        <button type="button" id="submit-btn" class="btn btn-primary" onclick="onClick()">找回密码</button>
+    </form>
+</div>
+<script type="text/javascript">
+    $(function () {
+       
+    });
+    function onClick() {
+        $.ajax({
+            url: "/SendMail/Send",
+            type: "post",
+            dataType: "json",
+            async: true,
+            success: function (data) {
+                alert(data);
+            }
+        });
+    }
+</script>

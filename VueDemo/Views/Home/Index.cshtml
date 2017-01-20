@@ -1,0 +1,52 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_layoutHome.cshtml";
+}
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link href="~/Scripts/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/Scripts/bootstrap/css/bootstrap-theme.css" rel="stylesheet" />
+    <link href="~/Scripts/bootstrap-3.2.0/css/bootstrap-theme.css" rel="stylesheet" />
+    <link href="~/Scripts/bootstrap-3.2.0/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.11.1.min.js"></script>
+    <script src="~/Scripts/bootstrap/js/bootstrap.js"></script>
+    <script src="~/Scripts/bootstrap-3.2.0/js/bootstrap-paginator.js"></script>
+    <script src="~/Scripts/dist/vue.js"></script>
+
+    <script src="~/Content/js/studyCenter.js"></script>
+    <style>
+        .learninglist dl {
+            border: 1px solid #ededed;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="studyCenter">
+            <div class="col-md-3 learninglist" v-for="item in row">
+                <dl>
+                    <a style="color:none;" target="_blank">
+                        <dt><img v-bind:src="item.ImgPath" class="img-responsive" style="width:263px;height:150px"></dt>
+                    </a>
+                    <dd>
+                        <a style="color:none;" target="_blank">
+                            <b>{{item.PlatName|PlatNameFilter}}</b>
+                        </a>
+                        <div title="" id="" style="display:none;font-size:15px;text-align:center;">
+                            <br /><br />
+                            <div style="font-family: '\5FAE\8F6F\96C5\9ED1';font-size:20px;width:360px;margin-left:10px;">{{item.Introduction|IntroductionFilter}}</div>
+                        </div>
+                        <p class=""> {{item.Introduction|IntroductionFilter}}</p>
+                        <span style="color: #ff7800; cursor:pointer;">查看详情</span>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+        <div id="pagination" class="pagination">
+        </div>
+    </div>
+
+</body>
+</html>

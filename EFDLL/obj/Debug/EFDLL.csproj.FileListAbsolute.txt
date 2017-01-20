@@ -1,0 +1,16 @@
+F:\VS\VS2013\vs2013Save\MyLearn\EFDLL\bin\Debug\EFDLL.dll.config
+F:\VS\VS2013\vs2013Save\MyLearn\EFDLL\bin\Debug\EFDLL.dll
+F:\VS\VS2013\vs2013Save\MyLearn\EFDLL\bin\Debug\EFDLL.pdb
+F:\VS\VS2013\vs2013Save\MyLearn\EFDLL\bin\Debug\EntityFramework.dll
+F:\VS\VS2013\vs2013Save\MyLearn\EFDLL\bin\Debug\EntityFramework.SqlServer.dll
+F:\VS\VS2013\vs2013Save\MyLearn\EFDLL\bin\Debug\Models.dll
+F:\VS\VS2013\vs2013Save\MyLearn\EFDLL\bin\Debug\MySql.Data.dll
+F:\VS\VS2013\vs2013Save\MyLearn\EFDLL\bin\Debug\MySql.Data.Entity.EF6.dll
+F:\VS\VS2013\vs2013Save\MyLearn\EFDLL\bin\Debug\Models.pdb
+F:\VS\VS2013\vs2013Save\MyLearn\EFDLL\bin\Debug\EntityFramework.xml
+F:\VS\VS2013\vs2013Save\MyLearn\EFDLL\bin\Debug\EntityFramework.SqlServer.xml
+F:\VS\VS2013\vs2013Save\MyLearn\EFDLL\bin\Debug\zh-Hans\EntityFramework.resources.dll
+F:\VS\VS2013\vs2013Save\MyLearn\EFDLL\bin\Debug\zh-Hans\EntityFramework.SqlServer.resources.dll
+F:\VS\VS2013\vs2013Save\MyLearn\EFDLL\obj\Debug\EFDLL.csprojResolveAssemblyReference.cache
+F:\VS\VS2013\vs2013Save\MyLearn\EFDLL\obj\Debug\EFDLL.dll
+F:\VS\VS2013\vs2013Save\MyLearn\EFDLL\obj\Debug\EFDLL.pdb

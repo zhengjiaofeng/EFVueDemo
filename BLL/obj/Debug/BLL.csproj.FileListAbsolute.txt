@@ -1,0 +1,12 @@
+F:\VS\VS2013\vs2013Save\MyLearn\BLL\bin\Debug\BLL.dll
+F:\VS\VS2013\vs2013Save\MyLearn\BLL\bin\Debug\BLL.pdb
+F:\VS\VS2013\vs2013Save\MyLearn\BLL\bin\Debug\EFDLL.dll
+F:\VS\VS2013\vs2013Save\MyLearn\BLL\bin\Debug\Models.dll
+F:\VS\VS2013\vs2013Save\MyLearn\BLL\bin\Debug\EntityFramework.dll
+F:\VS\VS2013\vs2013Save\MyLearn\BLL\bin\Debug\EFDLL.pdb
+F:\VS\VS2013\vs2013Save\MyLearn\BLL\bin\Debug\Models.pdb
+F:\VS\VS2013\vs2013Save\MyLearn\BLL\bin\Debug\EntityFramework.xml
+F:\VS\VS2013\vs2013Save\MyLearn\BLL\bin\Debug\zh-Hans\EntityFramework.resources.dll
+F:\VS\VS2013\vs2013Save\MyLearn\BLL\obj\Debug\BLL.csprojResolveAssemblyReference.cache
+F:\VS\VS2013\vs2013Save\MyLearn\BLL\obj\Debug\BLL.dll
+F:\VS\VS2013\vs2013Save\MyLearn\BLL\obj\Debug\BLL.pdb

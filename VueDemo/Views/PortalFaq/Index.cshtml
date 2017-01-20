@@ -1,0 +1,144 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_layoutHome.cshtml";
+}
+<html>
+<head>
+    <link href="~/Scripts/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/Scripts/bootstrap/css/bootstrap-theme.css" rel="stylesheet" />
+    <link href="~/Scripts/bootstrap-3.2.0/css/bootstrap-theme.css" rel="stylesheet" />
+    <link href="~/Scripts/bootstrap-3.2.0/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Scripts/bootstrap-3.2.0/css/main-blue-light.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.11.1.min.js"></script>
+    <script src="~/Scripts/dist/vue.js"></script>
+    <script src="~/Scripts/bootstrap/js/bootstrap.js"></script>
+    <script src="~/Scripts/bootstrap-3.2.0/js/bootstrap-paginator.js"></script>
+    <script src="~/Scripts/ueditor1_4_3_2-utf8-net/utf8-net/ueditor.config.js"></script>
+    <script src="~/Scripts/ueditor1_4_3_2-utf8-net/utf8-net/ueditor.all.js"></script>
+    <script src="~/Scripts/ueditor1_4_3_2-utf8-net/utf8-net/lang/zh-cn/zh-cn.js"></script>
+    
+    <script src="~/Content/js/PortalFaq/PortalFaq.js"></script>
+    <style>
+        /*在线答疑*/
+        .faqtab a {
+            padding: 0 20px;
+        }
+
+            .faqtab a:hover {
+                color: #ff6c00;
+            }
+
+            .faqtab a.hover {
+                color: #ff6c00;
+            }
+
+        .mbl {
+            margin-bottom: 20px !important;
+        }
+    </style>
+</head>
+<body>
+
+
+    <div class="container" >
+        <ol class="breadcrumb breadcrumb-o">
+            <li><a href="/Home/PortalIndex">首页</a></li>
+            <li class="active"><a href="">在线答疑</a></li>
+        </ol>
+        <div class="row" id="PortalFaq">
+            <div class="col-md-9" >
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title faqtab" id="faqtab">
+                            <a class="hover" v-on:click="open('all')">全部</a>
+                            <a class="hover" v-on:click="open('question')">直接提问</a>
+                            <a class="hover" v-on:click="open('discussion')">课程提问</a>
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        <ul class="media-list thread-list">
+                            <li class="media" v-for="item in row">
+                                <div class="media-left">
+                                    <span class="reply-num">
+                                        <strong> {{item.PostNum}} </strong> 回复
+                                    </span>
+                                </div>
+                                <div class="media-body">
+                                    <div class="media-heading">
+                                        <a class="title gray-darker">{{item.Title}}</a>
+                                    </div>
+                                    <div class="metas">
+                                        <a class="userImg js-user-card" data-card-url="/user/2487/card/show" data-user-id="2487" data-original-title="" title="">
+                                            <img class="avatar-xxs" v-bind:src="item.UserNameHeadImgUrl">
+                                        </a>
+                                        <a class="link-dark pls">{{item.userFullName}}</a>发起了问题 <span class="divider">•</span>{{item.CreateTimeStr}} 创建
+
+                                        <span class="divider">•</span>
+                                        <a class="gray-darker" href="" title=""></a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <div id="pagination" class="pagination">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3" id="addCourseThreadFm">
+                <form class="mbl" id="fm">
+                    <div class="form-group controls">
+                        <div class="search-with-btn">
+                            <input type="text" id="title" class="form-control" placeholder="我要提问" name="title" value="" style="color:black">
+                            <input type="hidden" id="content" name="content" value="">
+                        </div>
+                    </div>
+                    <div id="editthread" style="margin-bottom:10px;">
+
+                    </div>
+                    <button type="button" class="btn btn-primary btn-sm">取消</button>
+                    @*<button type="button" class="btn btn-primary btn-sm" style="margin:0 10px" v-on:click="addCourseThread()" >提问</button>*@
+                    <a class="btn btn-primary btn-sm" style="margin:0 10px" v-on:click="add()"> 提问</a>
+                </form>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading"><h3 class="panel-title">问题分类</h3></div>
+                    <div class="panel-body">
+                        <div class="media-group-list">
+                            <templatehtml id="course-thread-class">
+                                <div class="media media-group">
+                                    <div class="media media-group">
+                                        <div class="media-left">
+                                            <a href="/PortalFaq/Index?type=all" title="全部分类">
+                                                全部分类 已有<span>{{allCount}}</span>个问题
+                                            </a>
+                                            <p class="questionesmall">课程提问与直接提问汇总</p>
+                                        </div>
+                                    </div>
+                                    <div class="media media-group">
+                                        <div class="media-left">
+                                            <a href="/PortalFaq/Index?type=question" title="直接提问">
+                                                直接提问 已有<span>{{questionCount}}</span> 个问题
+                                            </a>
+                                            <p class="questionesmall">直接提问汇总</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="media media-group">
+                                        <div class="media-left">
+                                            <a href="/PortalFaq/Index?type=discussion" title="课程提问">
+                                                课程提问 已有<span>{{discussionCount}}</span>个问题
+                                            </a>
+                                            <p class="questionesmall">课程提问汇总</p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </templatehtml>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

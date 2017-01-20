@@ -1,0 +1,183 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue导航菜单</title>
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    @*<link rel="stylesheet" href="style.css">*@
+    @*<script src="vue.js"></script>*@
+    <script src="~/Scripts/vue-dev/dist/vue.min.js"></script>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+
+
+    <div id="demo">
+        {{message}}
+        <br />
+        <input v-model="message">
+    </div>
+    <div id="demo1">
+        {{message1}}
+        <br />
+        <input type="text" v-model="message1" value="123" />
+    </div>
+
+    <div id="demo2">
+        <h1>{{obj.text}}</h1>
+    </div>
+
+    <div id="demo3">
+        <input type="button" value="点击" v-on:click="appendLi()" />
+        <ul v-for="item in arr">
+            <li>{{item}}</li>
+        </ul>
+    </div>
+
+    <!-- v-show 显示隐藏 -->
+    <div id="demo4">
+        <input type="button" value="点击" v-on:click="show()" />
+        <div class="box" v-show="a"></div>
+    </div>
+
+    <div id="demo5">
+        <span id="demo5_span">{{msg}}</span>
+        <input type="button" v-on:click="updateMessage()" value="更新" />
+    </div>
+
+    <div id="demo6">
+        <div id="app">
+            <input type="text" v-focus="name" v-model="name" data-name="name">
+            <button type="button" v-on:click="name='zw123'">click</button>
+            <!--当点击按钮的时候name改变，继而触发update中的方法-->
+        </div>
+    </div>
+
+
+    <div id="demo_V-demo" v-demo="{ color: 'white', text: 'hello!' }">{{msg}}</div>
+
+
+    <script>
+        var vm = new Vue({
+            el: '#demo',
+            data: {
+                message: 'Hello',
+            },
+
+        });
+        var vm1 = new Vue({
+            el: "#demo1",
+            data: {
+                message1: "message1"
+            }
+        });
+        console.log(vm1.$data.message1)
+        var vm2 = new Vue({
+            el: '#demo2',
+            data: {
+                obj: {
+                    text: "123"
+                }
+            }
+        });
+        setTimeout(function () {
+            vm2.$data.obj.text = "一秒变身~";
+        }, 1000);
+        var vm3 = new Vue({
+            el: "#demo3",
+            data: {
+                arr: ['a', 'b', 'c', 'd']
+            },
+            methods: {
+                appendLi: function () {
+                    //this.arr.push("e");
+                    vm3.$data.arr.push("3");
+                }
+            }
+        });
+
+        var vm4 = new Vue({
+            el: "#demo4",
+            data: {
+                a: true,
+            },
+            methods: {
+                show: function () {
+                    this.a = !this.a;
+
+                }
+            }
+        });
+        var vm5 = new Vue({
+            el: "#demo5",
+            data: {
+                msg: "demo5 noUpdate",
+            },
+            methods: {
+                updateMessage: function () {
+                    this.msg = 'updated'
+                    console.log(this.$el.textContent) // => 'not updated'
+                    this.$nextTick(function () {
+                        console.log(this.$el.textContent) // => 'updated'
+                    })
+                }
+            }
+        });
+
+        Vue.directive('focus', {
+            bind: function (el, binding) {
+                console.log('bind:', binding.value);
+            },
+            inserted: function (el, binding) {
+                console.log('insert:', binding.value);
+            },
+            update: function (el, binding, vnode, oldVnode) {
+                el.focus();
+                console.log(el.dataset.name);//这里的数据是可以动态绑定的
+                console.table({
+                    name: binding.name,
+                    value: binding.value,
+                    oldValue: binding.oldValue,
+                    expression: binding.expression,
+                    arg: binding.arg,
+                    modifiers: binding.modifiers,
+                    vnode: vnode,
+                    oldVnode: oldVnode
+                });
+            },
+            componentUpdated: function (el, binding) {
+                console.log('componentUpdated:', binding.name);
+            }
+        });
+        new Vue({
+            el: '#app',
+            data: {
+                name: 'zwzhai'
+            }
+        });
+
+        Vue.directive("demo", function (value) {
+            console.log("color" + value.color) // "white"
+            console.log("text" + value.text) // "hello!"
+        });
+
+        var v_demo = new Vue({
+            el: "#demo_V-demo",
+            data: {
+                msg: "v_memo1"
+            }
+        })
+
+    </script>
+</body>
+</html>
