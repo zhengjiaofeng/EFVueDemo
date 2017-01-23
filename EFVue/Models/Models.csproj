@@ -45,6 +45,8 @@
     <Compile Include="courses\Course.cs" />
     <Compile Include="courses\CourseLesson.cs" />
     <Compile Include="courses\CourseThread.cs" />
+    <Compile Include="courses\CourseThreadPost.cs" />
+    <Compile Include="InputModels\courses\CourseThreadDetail.cs" />
     <Compile Include="InputModels\courses\CourseThreadInputDto.cs" />
     <Compile Include="InputModels\courses\courseTreadView.cs" />
     <Compile Include="InputModels\homePage\HomePageCourse.cs" />

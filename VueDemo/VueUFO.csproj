@@ -157,6 +157,7 @@
   <ItemGroup>
     <Content Include="Areas\Areas\js\studenManger\exprotDefalut.js" />
     <Content Include="Areas\Areas\js\studenManger\vueTable.js" />
+    <Content Include="Content\js\PortalFaq\courseThreadDetail.js" />
     <Content Include="Content\js\PortalFaq\PortalFaq.js" />
     <Content Include="Content\js\studyCenter.js" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -584,6 +585,7 @@
     <Content Include="Scripts\ueditor1_4_3_2-utf8-net\utf8-net\third-party\video-js\font\vjs.woff" />
     <Content Include="Scripts\ueditor1_4_3_2-utf8-net\__MACOSX\utf8-net\._.DS_Store" />
     <Content Include="Scripts\ueditor1_4_3_2-utf8-net\__MACOSX\utf8-net\third-party\._.DS_Store" />
+    <Content Include="Views\PortalFaq\CourseThreadDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

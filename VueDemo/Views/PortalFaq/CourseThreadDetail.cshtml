@@ -1,0 +1,68 @@
+﻿@{
+    ViewBag.Title = "CourseThreadDetail";
+    Layout = "~/Views/Shared/_layoutHome.cshtml";
+}
+
+<link href="~/Scripts/bootstrap/css/bootstrap.css" rel="stylesheet" />
+<link href="~/Scripts/bootstrap/css/bootstrap-theme.css" rel="stylesheet" />
+<link href="~/Scripts/bootstrap-3.2.0/css/bootstrap-theme.css" rel="stylesheet" />
+<link href="~/Scripts/bootstrap-3.2.0/css/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Scripts/bootstrap-3.2.0/css/main-blue-light.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-1.11.1.min.js"></script>
+<script src="~/Scripts/dist/vue.js"></script>
+<script src="~/Scripts/bootstrap/js/bootstrap.js"></script>
+<script src="~/Scripts/bootstrap-3.2.0/js/bootstrap-paginator.js"></script>
+<script src="~/Scripts/ueditor1_4_3_2-utf8-net/utf8-net/ueditor.config.js"></script>
+<script src="~/Scripts/ueditor1_4_3_2-utf8-net/utf8-net/ueditor.all.js"></script>
+<script src="~/Scripts/ueditor1_4_3_2-utf8-net/utf8-net/lang/zh-cn/zh-cn.js"></script>
+<script>
+    var treadId = '@ViewBag.treadId';
+</script>
+<script src="~/Content/js/PortalFaq/courseThreadDetail.js"></script>
+<div class=" container">
+    <div class="row">
+        <div class="col-sm-8" style="margin: 30px auto; float: none;">
+            <div class="row row-12">
+                <div class="col-md-12">
+                    <div class="panel panel-default  course-header">
+                        <h1 class="title">
+                            课程名称
+                        </h1>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="panel panel-default  course-header">
+                        <div class="panel-body" id="courseThreadDetail">
+                            <templatedetaillist id="detailList">
+                                <div>
+                                    <ul>
+                                        <li><a class="ng-binding">讨论区</a></li>
+                                        <li><a class="ng-binding">课堂交流区</a></li>
+                                        <li><span href="javascript:;" class="ng-binding">主题详情</span></li>
+                                    </ul>
+                                    <div class="thread-header">
+                                        <h2 class="thread-title">
+                                            <span ng-bind="thread.title" class="ng-binding"></span>
+                                        </h2>
+                                        <div class="thread-metas" style="margin-top: 10px;">
+                                            <span ng-bind="'By'" class="ng-binding">By</span>
+                                            <a class="link-muted ng-binding">用户名</a>
+                                            <div>{{idc}}</div>
+                                            @*<span class="bullet mhs ng-binding" >• {{courseThread.createTime}}</span>*@
+                                            @*<span class="bullet mhs ng-binding">• {{courseThread.browseNum}}次浏览</span>*@
+                                        </div>
+                                    </div>
+                                </div>
+                            </templatedetaillist>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+

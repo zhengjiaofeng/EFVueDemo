@@ -10,3 +10,15 @@ F:\VS\VS2013\vs2013Save\MyLearn\BLL\bin\Debug\zh-Hans\EntityFramework.resources.
 F:\VS\VS2013\vs2013Save\MyLearn\BLL\obj\Debug\BLL.csprojResolveAssemblyReference.cache
 F:\VS\VS2013\vs2013Save\MyLearn\BLL\obj\Debug\BLL.dll
 F:\VS\VS2013\vs2013Save\MyLearn\BLL\obj\Debug\BLL.pdb
+E:\C#下载项目\vsConnectGit\EFVue\BLL\bin\Debug\BLL.dll
+E:\C#下载项目\vsConnectGit\EFVue\BLL\bin\Debug\BLL.pdb
+E:\C#下载项目\vsConnectGit\EFVue\BLL\bin\Debug\EFDLL.dll
+E:\C#下载项目\vsConnectGit\EFVue\BLL\bin\Debug\Models.dll
+E:\C#下载项目\vsConnectGit\EFVue\BLL\bin\Debug\EntityFramework.dll
+E:\C#下载项目\vsConnectGit\EFVue\BLL\bin\Debug\EFDLL.pdb
+E:\C#下载项目\vsConnectGit\EFVue\BLL\bin\Debug\Models.pdb
+E:\C#下载项目\vsConnectGit\EFVue\BLL\bin\Debug\EntityFramework.xml
+E:\C#下载项目\vsConnectGit\EFVue\BLL\bin\Debug\zh-Hans\EntityFramework.resources.dll
+E:\C#下载项目\vsConnectGit\EFVue\BLL\obj\Debug\BLL.csprojResolveAssemblyReference.cache
+E:\C#下载项目\vsConnectGit\EFVue\BLL\obj\Debug\BLL.dll
+E:\C#下载项目\vsConnectGit\EFVue\BLL\obj\Debug\BLL.pdb

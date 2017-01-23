@@ -2,3 +2,7 @@ F:\VS\VS2013\vs2013Save\MyLearn\EFVue\Models\bin\Debug\Models.dll
 F:\VS\VS2013\vs2013Save\MyLearn\EFVue\Models\bin\Debug\Models.pdb
 F:\VS\VS2013\vs2013Save\MyLearn\EFVue\Models\obj\Debug\Models.dll
 F:\VS\VS2013\vs2013Save\MyLearn\EFVue\Models\obj\Debug\Models.pdb
+E:\C#下载项目\vsConnectGit\EFVue\EFVue\Models\bin\Debug\Models.dll
+E:\C#下载项目\vsConnectGit\EFVue\EFVue\Models\bin\Debug\Models.pdb
+E:\C#下载项目\vsConnectGit\EFVue\EFVue\Models\obj\Debug\Models.dll
+E:\C#下载项目\vsConnectGit\EFVue\EFVue\Models\obj\Debug\Models.pdb

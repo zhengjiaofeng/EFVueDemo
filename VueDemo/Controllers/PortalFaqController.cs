@@ -22,6 +22,35 @@ namespace VueDemo.Controllers
             return View();
         }
 
+        public ActionResult CourseThreadDetail(string treadId)
+        {
+            ViewBag.treadId = treadId;
+            return View();
+        }
+
+        public JsonResult GetCourseThreadDetailList(string threadId)
+        {
+            Dictionary<string, object> dic = new Dictionary<string, object>();
+            bool isSuccess = false;
+            try
+            {
+                int total = 0;
+                var detailList = couseThreadServer.GetCourseThreadDetailList(threadId, total, ref total);
+                var courseThread = couseThreadServer.GetCourseThread(threadId);
+                isSuccess = true;
+                dic.Add("total", total);
+                dic.Add("detailList", detailList);
+                dic.Add("courseThread", courseThread);
+                dic.Add("isSuccess", isSuccess);
+            }
+            catch (Exception ex)
+            {
+                isSuccess = false;
+                dic.Add("isSuccess", isSuccess);
+            }
+            return Json(dic, JsonRequestBehavior.AllowGet);
+        }
+
         public JsonResult GetCourseThreadList(string type, int page = 1, int pageSize = 20)
         {
             Dictionary<string, object> dic = new Dictionary<string, object>();

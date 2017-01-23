@@ -9,14 +9,14 @@
     <link href="~/Scripts/bootstrap-3.2.0/css/bootstrap-theme.css" rel="stylesheet" />
     <link href="~/Scripts/bootstrap-3.2.0/css/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Scripts/bootstrap-3.2.0/css/main-blue-light.css" rel="stylesheet" />
-    <script src="~/Scripts/jquery-1.11.1.min.js"></script>
-    <script src="~/Scripts/dist/vue.js"></script>
+    <script src="~/Scripts/jquery-1.11.1.min.js"></script>   
     <script src="~/Scripts/bootstrap/js/bootstrap.js"></script>
     <script src="~/Scripts/bootstrap-3.2.0/js/bootstrap-paginator.js"></script>
     <script src="~/Scripts/ueditor1_4_3_2-utf8-net/utf8-net/ueditor.config.js"></script>
     <script src="~/Scripts/ueditor1_4_3_2-utf8-net/utf8-net/ueditor.all.js"></script>
     <script src="~/Scripts/ueditor1_4_3_2-utf8-net/utf8-net/lang/zh-cn/zh-cn.js"></script>
-    
+    <script src="~/Scripts/dist/vue-router.js"></script>
+    <script src="~/Scripts/dist/vue.js"></script>
     <script src="~/Content/js/PortalFaq/PortalFaq.js"></script>
     <style>
         /*在线答疑*/
@@ -65,7 +65,8 @@
                                 </div>
                                 <div class="media-body">
                                     <div class="media-heading">
-                                        <a class="title gray-darker">{{item.Title}}</a>
+                                        <a v-bind:href="item |getUrlFil" class="title gray-darker">{{item.Title}}</a>
+                                        @*<router-link to="/PortalFaq/CourseThreadDetail/" class="title gray-darker">{{item.Title}}</router-link>*@
                                     </div>
                                     <div class="metas">
                                         <a class="userImg js-user-card" data-card-url="/user/2487/card/show" data-user-id="2487" data-original-title="" title="">

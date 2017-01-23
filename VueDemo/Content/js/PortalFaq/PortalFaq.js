@@ -13,7 +13,7 @@
         methods: {
             loadCourseThreadList: function (listPage, lsitType) {
                 var _PortalFaq = this;
-                var url = "/PortalFaq/GetCourseThreadList";
+                var url = "/PortalFaq/GetCourseThreadDetailList";
                 var pages = 1;
                 if (listPage > 0) {
                     pages = listPage;
@@ -148,6 +148,12 @@
                         });
                     },
                 }
+            }
+        },
+        filters: {
+            getUrlFil: function (obj)
+            {
+                return "/PortalFaq/CourseThreadDetail/?treadId=" + obj.ThreadId
             }
         }
 

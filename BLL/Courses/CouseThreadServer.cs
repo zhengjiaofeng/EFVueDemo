@@ -17,11 +17,13 @@ namespace BLL.Courses
         private Repository<CourseThread> courseThreadRepository;
         private Repository<users> usersRepository;
         private Repository<Course> courseRepository;
+        private Repository<CourseThreadPost> courseThreadPost;
         public CouseThreadServer()
         {
             courseThreadRepository = unitOfWork.Repository<CourseThread>();
             usersRepository = unitOfWork.Repository<users>();
             courseRepository = unitOfWork.Repository<Course>();
+            courseThreadPost = unitOfWork.Repository<CourseThreadPost>();
         }
 
         /// <summary>
@@ -190,13 +192,51 @@ namespace BLL.Courses
                 ct.learnPlatformId = input.LearningPlatformId.TryParseGuid();
                 this.courseThreadRepository.Insert(ct);
                 unitOfWork.Save();
-                return  true;
+                return true;
             }
             catch (Exception ex)
             {
                 return false;
             }
-            
+
+        }
+
+        public List<CourseThreadDetail> GetCourseThreadDetailList(string threadId, int pageSiz, ref int total)
+        {
+            var list = new  List<CourseThreadDetail>();
+            var data = from cp in courseThreadPost.GetAll()
+                       join u in usersRepository.GetAll() on cp.userId equals u.id
+                       // join c in courseRepository.GetAll() on cp.courseId equals c.id
+                       where cp.threadId.ToString()==threadId
+                       orderby cp.createTime
+                       select new CourseThreadDetail()
+                        {
+                            ThreadId = cp.id.ToString(),
+                            // ReplyNum = c.replyNum,
+                            Content = cp.content,
+                            CreateTime = cp.createTime,
+                            UserHeadImg = u.smallAvatar,
+                            UserId = u.id,
+                            UserName = u.userFullName ?? u.userLoginName
+                        };
+            list = data.ToList();
+            total = data.Count();
+            return list;
+           
+        }
+
+        public CourseThread GetCourseThread(string threadId)
+        {
+            CourseThread courseThread = new CourseThread();
+            try
+            {
+                courseThread = courseThreadRepository.GetById(threadId);
+            }
+            catch (Exception ex)
+            {
+                
+            }
+            return courseThread ?? new CourseThread();
         }
     }
 }

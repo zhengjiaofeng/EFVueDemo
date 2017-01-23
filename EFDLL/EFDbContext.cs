@@ -43,6 +43,7 @@ namespace EFDLL
             modelBuilder.Entity<Project>().ToTable("project");
             modelBuilder.Entity<ProjectPlatform>().ToTable("project_platform");
             modelBuilder.Entity<ProjectCourse>().ToTable("project_course");
+            modelBuilder.Entity<CourseThreadPost>().ToTable("course_thread_post");
            
         }
         public DbSet<users> UserInfo { get; set; }
@@ -58,6 +59,10 @@ namespace EFDLL
         public DbSet<ProjectCourse> ProjectCourse { get; set; }
 
         public DbSet<CourseThread> CourseThread { get; set; }
+
+        public DbSet<CourseThreadPost> CourseThreadPost { get; set; }
+        
+
 
     }
 }
